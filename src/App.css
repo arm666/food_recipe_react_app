@@ -1,38 +1,235 @@
-.App {
-  text-align: center;
+body {
+  background: rgba(109, 170, 248, 0.5);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar {
+  user-select: none;
+  background: #6daaf8;
+  padding: 10px 20px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.navbar .item {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar .item .title {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: Pacifico;
+  letter-spacing: 1.5px;
+  word-spacing: 5px;
+  background: linear-gradient(to right, rgba(0, 0, 255, 0.8), rgba(13, 13, 216, 0.5));
+  background-clip: text;
+  color: transparent;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.navbar .item .title::first-letter {
+  font-size: 2.8rem;
+}
+
+.navbar .item .desc {
+  line-height: 1px;
+  text-indent: 0px;
+  font-style: normal;
+  text-transform: capitalize;
+  padding-bottom: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+.navbar .developer {
+  color: rgba(0, 0, 0, 0.8);
+  font-style: italic;
+}
+
+.navbar button {
+  background: #f5504a;
+  padding: 5px 30px;
+  color: white;
+  border: 1px solid #fbc0c0;
+  cursor: pointer;
+}
+
+.searchBox {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchBox input {
+  width: 500px;
+  border-width: 0;
+  border-bottom-width: 1.5px;
+  border-color: rgba(0, 0, 0, 0.5);
+  background: transparent;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.searchBox input:focus {
+  outline: 0px solid white;
+}
+
+.searchBox input::placeholder {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.searchBox button {
+  margin: 20px;
+  background: #f5504a;
+  padding: 10px 35px;
+  color: white;
+  border: 1px solid #fbc0c0;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.searchBox .error {
+  background: rgba(245, 80, 74, 0.9);
+  padding: 8px 30px;
+  color: white;
+  font-size: 0.8rem;
+  display: none;
+}
+
+.searchBox .error .title {
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.searchBox .error .desc {
+  letter-spacing: 0.5px;
+}
+
+.searchBox .isLoading {
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.searchBox .isLoading span {
+  animation: loading infinite linear 1s;
+}
+
+@keyframes loading {
+  0% {
+    color: #000;
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    color: rgba(0, 0, 0, 0.2);
   }
+}
+
+.recipeSearched {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.recipeSearched .ingredient_toolTip {
+  max-height: 400px;
+  overflow: auto;
+}
+
+.recipeSearched .eachRecipe {
+  border-radius: 5px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.2);
+  color: #202020;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.recipeSearched .eachRecipe:hover {
+  transition: 0.5s;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.recipeSearched .eachRecipe:hover > .img img {
+  transition: 0.5s;
+  transform: scale(1.1);
+}
+
+.recipeSearched .eachRecipe:hover > div .title {
+  transition: 0.5s;
+  transform: translateX(5px);
+}
+
+.recipeSearched .eachRecipe .img {
+  width: 100%;
+  overflow: hidden;
+}
+
+.recipeSearched .eachRecipe .img img {
+  height: 300px;
+  width: 100%;
+  object-fit: fill;
+}
+
+.recipeSearched .eachRecipe div .title {
+  padding: 20px;
+  font-weight: bold;
+}
+
+.searchedText {
+  margin: 10px 20px;
+}
+
+.searchedText .title {
+  font-family: Ubuntu;
+  font-size: large;
+  font-weight: bold;
+  text-transform: lowercase;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+@media only screen and (max-width: 1200px) {
+  .recipeSearched {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .searchBox input {
+    width: 300px;
+  }
+  .recipeSearched {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .searchBox input {
+    width: 350px;
+  }
+  .recipeSearched {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
