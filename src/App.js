@@ -1,24 +1,22 @@
-import React, { useState } from "react";
+import React, {  } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import SearchC from "./components/SearchC";
 import { Router, Switch, Route } from "react-router-dom";
 import Recipe from "./components/Recipe";
 import history from "./components/history";
+import EachRecipe from "./components/EachRecipe";
 
-export const recipeContext = React.createContext("");
 function App() {
-  const [recipeVal, setrecipeVal] = useState("");
   return (
     <Router history={history}>
+      <Navbar />
       <Switch>
-        <recipeContext.Provider value={recipeVal}>
-          <Navbar />
-          <Route exact path="/">
-            <SearchC recipeChange={setrecipeVal} />
-          </Route>
-          <Route exact path="/search/:name" component={Recipe}></Route>
-        </recipeContext.Provider>
+        <Route exact path="/">
+          <SearchC />
+        </Route>
+        <Route path="/search/:name" component={Recipe}></Route>
+        <Route path="/recipe/:name" component={EachRecipe}></Route>
       </Switch>
     </Router>
   );

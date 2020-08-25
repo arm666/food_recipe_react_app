@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import history from "./history";
 import { withRouter } from "react-router-dom";
 
-function SearchC({ recipeChange }) {
+function SearchC() {
   const [recipeName, setrecipeName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [searchLoading, setsearchLoading] = useState("");
@@ -12,7 +12,6 @@ function SearchC({ recipeChange }) {
     e.preventDefault();
     if (recipeName.length > 2) {
       document.querySelector(".error").style.display = "none";
-      recipeChange(recipeName);
       getData();
     } else {
       // document.querySelector(".error").style.display = "block";
@@ -32,10 +31,12 @@ function SearchC({ recipeChange }) {
       "&app_key=" +
       appKey;
     console.log(url);
+
+    //api call
     let data = await fetch(url)
       .then((res) => res.json())
       .then((d) => {
-        if (d.hits.length != 0) {
+        if (d.hits.length !== 0) {
           history.push("/search/" + recipeName, {
             recipeArr: d.hits,
           });
@@ -45,7 +46,7 @@ function SearchC({ recipeChange }) {
         }
       })
       .catch((e) => {
-        setsearchLoading(false);
+        setIsLoading(false);
         document.querySelector(".error").style.display = "block";
       });
   };
@@ -54,7 +55,7 @@ function SearchC({ recipeChange }) {
   const inputChange = (e) => {
     setrecipeName(e.target.value);
     e.target.addEventListener("keydown", (e) => {
-      if (e.keyCode == 8) {
+      if (e.keyCode === 8) {
         document.querySelector(".error").style.display = "none";
       }
     });
@@ -87,6 +88,7 @@ function SearchC({ recipeChange }) {
           <div className="desc">- Please search valid Recipe name.</div>
           <div className="desc">- Please search atleast 3 characters.</div>
           <div className="desc">- Should not include any symbols.</div>
+          <div className="desc">- Check your internet access.</div>
         </div>
         {isLoading && (
           <div className="isLoading">

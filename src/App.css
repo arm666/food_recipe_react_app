@@ -77,6 +77,7 @@ body {
 
 .searchBox input::placeholder {
   color: rgba(0, 0, 0, 0.2);
+  user-select: none;
 }
 
 .searchBox button {
@@ -128,7 +129,7 @@ body {
 .recipeSearched {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
+  grid-gap: 30px;
   padding: 20px;
   justify-content: center;
 }
@@ -190,6 +191,118 @@ body {
   color: rgba(0, 0, 0, 0.8);
 }
 
+.eachRecipePage .imageAndInfo {
+  display: flex;
+  justify-content: center;
+}
+
+.eachRecipePage .imageAndInfo .imageAndLabel {
+  width: 310px;
+  padding: 20px;
+}
+
+.eachRecipePage .imageAndInfo .imageAndLabel .img {
+  width: 100%;
+}
+
+.eachRecipePage .imageAndInfo .imageAndLabel .img img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border: 5px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.eachRecipePage .imageAndInfo .imageAndLabel .label {
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 10px;
+}
+
+.eachRecipePage .imageAndInfo .imageAndLabel .status {
+  display: none;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+
+.eachRecipePage .imageAndInfo .imageAndLabel .status div {
+  margin: 2.5px;
+  flex: 1;
+}
+
+.eachRecipePage .imageAndInfo .imageAndLabel .status .title {
+  font-weight: bold;
+}
+
+.eachRecipePage .imageAndInfo .imageAndLabel .status .pos {
+  padding: 5px;
+}
+
+.eachRecipePage .imageAndInfo .imageAndLabel .status .neg {
+  padding: 5px;
+}
+
+.eachRecipePage .imageAndInfo .info {
+  margin: 20px;
+  margin-left: 50px;
+}
+
+.eachRecipePage .imageAndInfo .info .title {
+  font-size: 2rem;
+  text-decoration: underline;
+}
+
+.eachRecipePage .IL {
+  margin: 50px 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eachRecipePage .IL .title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.eachRecipePage .IL .desc {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 30px;
+  grid-gap: 10px;
+}
+
+.eachRecipePage .IL .desc .eachIngredientsList {
+  display: flex;
+}
+
+.eachRecipePage .IL .desc .eachIngredientsList .ingredient {
+  display: flex;
+  align-items: center;
+}
+
+.eachRecipePage .IL .desc .eachIngredientsList img {
+  width: 100px;
+  height: 100px;
+}
+
+.eachRecipePage .IL .desc .eachIngredientsList .titleAndWeight {
+  margin: 0 20px;
+}
+
+.eachRecipePage .IL .desc .eachIngredientsList .titleAndWeight .text {
+  text-transform: capitalize;
+}
+
+.eachRecipePage .IL .desc .eachIngredientsList .titleAndWeight .weight::before {
+  content: "Weight (gm) / No : ";
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.8);
+}
+
 @media only screen and (max-width: 1200px) {
   .recipeSearched {
     grid-template-columns: repeat(3, 1fr);
@@ -203,6 +316,16 @@ body {
   .recipeSearched {
     grid-template-columns: repeat(2, 1fr);
   }
+  .eachRecipePage .imageAndInfo {
+    flex-direction: column;
+    align-items: center;
+  }
+  .eachRecipePage .imageAndInfo .info {
+    align-self: flex-start;
+  }
+  .eachRecipePage .IL .desc {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -210,6 +333,9 @@ body {
     width: 350px;
   }
   .recipeSearched {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .eachRecipePage .IL .desc {
     grid-template-columns: repeat(1, 1fr);
   }
 }

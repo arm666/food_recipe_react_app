@@ -1,46 +1,37 @@
 import React, { useState } from "react";
-import Tippy from "@tippyjs/react";
-import "tippy.js/dist/tippy.css";
-function Recipe(match) {
-  const [recipeData, setRecipeData] = useState(match.location.state.recipeArr);
-
+import { BrowserRouter as Router, NavLink, withRouter } from "react-router-dom";
+import history from "./history";
+function Recipe({ match, location }) {
+  // reciving data from history location
+  const [recipeData, setRecipeData] = useState(location.state.recipeArr);
+  const changePath = (data) => {
+    history.push("/recipe/" + data.recipe.label, {
+      data,
+    });
+  };
   return (
-    <>
+    <div>
       <div className="searchedText">
-        <div className="title">Searched Recipe : {match.match.params.name}</div>
+        <div className="title">Searched Recipe : {match.params.name}</div>
       </div>
       <div className="recipeSearched">
         {recipeData.map((data, index) => (
-          <Tippy
+          <div
+            className="eachRecipe"
             key={index + "recipe"}
-            content={
-              <ul className="ingredient_toolTip">
-                {data.recipe.ingredientLines.map((data, index) => (
-                  <li key={index + "ingredient"}>{data}</li>
-                ))}
-              </ul>
-            }
-            interactive={true}
-            interactiveBorder={20}
-            delay={100}
-            appendTo="parent"
-            animation="fade"
-            hideOnClick={"toggle"}
-            placement="right"
+            onClick={() => changePath(data)}
           >
-            <div className="eachRecipe">
-              <div className="img">
-                <img src={data.recipe.image} />
-              </div>
-              <div>
-                <div className="title">{data.recipe.label}</div>
-              </div>
+            <div className="img">
+              <img src={data.recipe.image} alt="Recipe" />
             </div>
-          </Tippy>
+            <div>
+              <div className="title">{data.recipe.label}</div>
+            </div>
+          </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
-export default Recipe;
+export default withRouter(Recipe);
