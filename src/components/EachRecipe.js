@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 function EachRecipe({
   location: {
     state: {
@@ -6,9 +6,12 @@ function EachRecipe({
     },
   },
 }) {
-  console.log(recipe.ingredients);
-window.scrollTo(0, 0);
+  window.scrollTo(0, 0);
 
+  const [totalNutrient, settotalNutrient] = useState(
+    Object.keys(recipe.totalNutrients).sort()
+  );
+  console.log(recipe.totalNutrients);
   return (
     <div className="eachRecipePage">
       <div className="imageAndInfo">
@@ -40,13 +43,16 @@ window.scrollTo(0, 0);
           <div className="title">Ingredients :</div>
           <ul>
             {recipe.ingredientLines.map((data, index) => (
-              <li key={index + "ingredientLines"}>{data}</li>
+              <li className="ingredientLines" key={index + "ingredientLines"}>
+                {data}
+              </li>
             ))}
           </ul>
         </div>
       </div>
       <div className="IL">
         <div className="title">Ingredient Detail's</div>
+        <p>These are the ingredients used to make this recipe.</p>
         <div className="desc">
           {recipe.ingredients.map((data, index) => (
             <div className="eachIngredientsList" key={index + "eachIL"}>
@@ -57,11 +63,36 @@ window.scrollTo(0, 0);
 
                 <div className="titleAndWeight">
                   <div className="text">{data.text}</div>
-                  <div className="weight">{data.weight}</div>
+                  <div className="weight">{parseInt(data.weight)}</div>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      <div className="totalNutrients">
+        <div className="title">Total Nutrients</div>
+        <div className="ListtotalNutrients">
+          <table>
+           <tr>
+           <th>SN</th>
+           <th>CODE</th>
+           <th>NAME OF NUTRIENT</th>
+           <th>QUANTITY</th>
+           </tr>
+            {totalNutrient.map((val, index) => (
+              <tr>
+                <td>{index + 1}</td>
+                <td>{val}</td>
+                <td>{recipe.totalNutrients[val].label}</td>
+                <td>
+                  {parseFloat(recipe.totalNutrients[val].quantity).toFixed(2)}{" "}
+                  {recipe.totalNutrients[val].unit}
+                </td>
+              </tr>
+            ))}
+          </table>
         </div>
       </div>
     </div>

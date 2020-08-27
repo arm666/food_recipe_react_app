@@ -82,6 +82,10 @@ body {
     border: 1px solid rgb(251, 192, 192);
     font-weight: 600;
     cursor: pointer;
+    transition: 0.5s;
+    &:hover {
+      background: rgb(253, 43, 35);
+    }
   }
   .error {
     background: rgba(245, 80, 74, 0.9);
@@ -159,6 +163,7 @@ body {
       .title {
         padding: 20px;
         font-weight: bold;
+        text-transform: capitalize;
       }
     }
   }
@@ -175,7 +180,7 @@ body {
 }
 
 // each Recipe  /recipe/:recipeName
-.eachRecipePage {
+.eachRecipePage {margin:30px;
   .imageAndInfo {
     display: flex;
     justify-content: center;
@@ -196,7 +201,8 @@ body {
         font-size: 1.3rem;
         font-weight: 600;
         text-align: center;
-        margin:10px;
+        margin: 10px;
+        text-transform: capitalize;
       }
       .status {
         display: none;
@@ -226,6 +232,9 @@ body {
         font-size: 2rem;
         text-decoration: underline;
       }
+      .ingredientLines {
+        text-transform: capitalize;
+      }
     }
   }
   .IL {
@@ -244,9 +253,14 @@ body {
       grid-template-columns: repeat(3, 1fr);
       padding: 30px;
       grid-gap: 10px;
+
       .eachIngredientsList {
         display: flex;
-
+        &:hover {
+          transition: 1s;
+          background: rgba(109, 170, 248, 0.6);
+          cursor: pointer;
+        }
         .ingredient {
           display: flex;
           align-items: center;
@@ -262,7 +276,13 @@ body {
           }
           .weight {
             &::before {
-              content: "Weight (gm) / No : ";
+              content: "Weight : ";
+              font-weight: 700;
+              font-size: 0.8rem;
+              color: rgba(0, 0, 0, 0.7);
+            }
+            &::after {
+              content: "gm";
               font-weight: 600;
               font-size: 0.8rem;
               color: rgba(0, 0, 0, 0.8);
@@ -322,6 +342,83 @@ body {
       }
     }
   }
+}
+
+.NotFound {
+  div:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .msg {
+    margin: 50px 0;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: ubuntu;
+    color: rgba(0, 0, 0, 0.8);
+  }
+  .button {
+    background: rgba(245, 80, 74, 0.8);
+    text-decoration: none;
+    padding: 10px 20px;
+    color: white;
+    &:hover {
+      background: rgba(245, 80, 74, 1);
+    }
+  }
+}
+
+.totalNutrients {
+  text-align: center;
+  margin: 100px 0px;
+  .title {
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  .ListtotalNutrients {
+    margin: 10px 100px;
+    display: flex;
+    justify-content: center;
+
+    table {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    table,
+    th,
+    td {
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      padding: 8px;
+      text-align: center;
+    }
+    tr:nth-child(even) {
+      background-color: #6c63f03a;
+    }
+    tr:hover {
+      background-color: rgba(55, 52, 236, 0.384);
+      cursor: pointer;
+    }
+    th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: center;
+      background-color: rgba(13, 13, 216, 0.5);
+      color: white;
+    }
+  }
+  // .ListtotalNutrients {
+  //   display: grid;
+  //   grid-template-columns: repeat(5,1fr);
+  //   .EachtotalNutrients {
+  //     margin: 20px;
+  //     .QAndUnit {
+  //       display: flex;
+  //     }
+  //   }
+  // }
 }
 
 /* width */

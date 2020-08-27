@@ -88,6 +88,11 @@ body {
   border: 1px solid #fbc0c0;
   font-weight: 600;
   cursor: pointer;
+  transition: 0.5s;
+}
+
+.searchBox button:hover {
+  background: #fd2b23;
 }
 
 .searchBox .error {
@@ -177,6 +182,7 @@ body {
 .recipeSearched .eachRecipe div .title {
   padding: 20px;
   font-weight: bold;
+  text-transform: capitalize;
 }
 
 .searchedText {
@@ -189,6 +195,10 @@ body {
   font-weight: bold;
   text-transform: lowercase;
   color: rgba(0, 0, 0, 0.8);
+}
+
+.eachRecipePage {
+  margin: 30px;
 }
 
 .eachRecipePage .imageAndInfo {
@@ -218,6 +228,7 @@ body {
   font-weight: 600;
   text-align: center;
   margin: 10px;
+  text-transform: capitalize;
 }
 
 .eachRecipePage .imageAndInfo .imageAndLabel .status {
@@ -253,6 +264,10 @@ body {
   text-decoration: underline;
 }
 
+.eachRecipePage .imageAndInfo .info .ingredientLines {
+  text-transform: capitalize;
+}
+
 .eachRecipePage .IL {
   margin: 50px 0;
   display: flex;
@@ -278,6 +293,12 @@ body {
   display: flex;
 }
 
+.eachRecipePage .IL .desc .eachIngredientsList:hover {
+  transition: 1s;
+  background: rgba(109, 170, 248, 0.6);
+  cursor: pointer;
+}
+
 .eachRecipePage .IL .desc .eachIngredientsList .ingredient {
   display: flex;
   align-items: center;
@@ -297,7 +318,14 @@ body {
 }
 
 .eachRecipePage .IL .desc .eachIngredientsList .titleAndWeight .weight::before {
-  content: "Weight (gm) / No : ";
+  content: "Weight : ";
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.eachRecipePage .IL .desc .eachIngredientsList .titleAndWeight .weight::after {
+  content: "gm";
   font-weight: 600;
   font-size: 0.8rem;
   color: rgba(0, 0, 0, 0.8);
@@ -338,6 +366,80 @@ body {
   .eachRecipePage .IL .desc {
     grid-template-columns: repeat(1, 1fr);
   }
+}
+
+.NotFound div:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.NotFound .msg {
+  margin: 50px 0;
+  font-size: 30px;
+  font-weight: 600;
+  font-family: ubuntu;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.NotFound .button {
+  background: rgba(245, 80, 74, 0.8);
+  text-decoration: none;
+  padding: 10px 20px;
+  color: white;
+}
+
+.NotFound .button:hover {
+  background: #f5504a;
+}
+
+.totalNutrients {
+  text-align: center;
+  margin: 100px 0px;
+}
+
+.totalNutrients .title {
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.totalNutrients .ListtotalNutrients {
+  margin: 10px 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.totalNutrients .ListtotalNutrients table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.totalNutrients .ListtotalNutrients table,
+.totalNutrients .ListtotalNutrients th,
+.totalNutrients .ListtotalNutrients td {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 8px;
+  text-align: center;
+}
+
+.totalNutrients .ListtotalNutrients tr:nth-child(even) {
+  background-color: #6c63f03a;
+}
+
+.totalNutrients .ListtotalNutrients tr:hover {
+  background-color: rgba(55, 52, 236, 0.384);
+  cursor: pointer;
+}
+
+.totalNutrients .ListtotalNutrients th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: rgba(13, 13, 216, 0.5);
+  color: white;
 }
 
 /* width */

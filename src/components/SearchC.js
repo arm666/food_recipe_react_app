@@ -14,7 +14,8 @@ function SearchC() {
       document.querySelector(".error").style.display = "none";
       getData();
     } else {
-      // document.querySelector(".error").style.display = "block";
+      setIsLoading(false);
+      document.querySelector(".error").style.display = "block";
     }
   };
 
@@ -53,13 +54,14 @@ function SearchC() {
 
   //input change for search recipe
   const inputChange = (e) => {
+    document.querySelector(".error").style.display = "none";
     setrecipeName(e.target.value);
     e.target.addEventListener("keydown", (e) => {
       if (e.keyCode === 8) {
         document.querySelector(".error").style.display = "none";
       }
     });
-    if (document.querySelector("#search").value.length > 0) {
+    if (document.querySelector("#search").value.length > 2) {
       setIsLoading(true);
       setsearchLoading("Recipe Name : ");
     } else {
