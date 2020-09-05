@@ -17,8 +17,4 @@ function NotFounds() {
   );
 }
 
-function NotFound3() {
-  return <div>notfownd3</div>;
-}
-
-export  { NotFounds, NotFound3 };
+export  default NotFounds ;
