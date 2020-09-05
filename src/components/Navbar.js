@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <div className="navbar">
       <div className="item title">
-        <NavLink to="/">
+        <NavLink to="/food_recipe_react_app">
           <div className="title">Food Recipe</div>
         </NavLink>
         <div className="desc">know your food?</div>

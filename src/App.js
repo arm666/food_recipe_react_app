@@ -13,11 +13,11 @@ function App() {
     <Router history={history}>
       <Navbar />
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/food_recipe_react_app/">
           <SearchC />
         </Route>
-        <Route path="/search/:name" component={Recipe}></Route>
-        <Route path="/recipe/:name" component={EachRecipe}></Route>
+        <Route path="/food_recipe_react_app/search/:name" component={Recipe}></Route>
+        <Route path="/food_recipe_react_app/recipe/:name" component={EachRecipe}></Route>
         <Route path="*" component={NotFounds}></Route>
       </Switch>
     </Router>

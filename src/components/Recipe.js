@@ -5,7 +5,7 @@ function Recipe({ match, location }) {
   // reciving data from history location
   const [recipeData, setRecipeData] = useState(location.state.recipeArr);
   const changePath = (data) => {
-    history.push("/recipe/" + data.recipe.label, {
+    history.push("/food_recipe_react_app/recipe/" + data.recipe.label, {
       data,
     });
   };

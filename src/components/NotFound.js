@@ -8,7 +8,7 @@ function NotFounds() {
       <div>
         <div className="msg">Page Not Found !!</div>
         <div>
-          <Link to="/" className="button">
+          <Link to="/food_recipe_react_app/" className="button">
             Go Home
           </Link>
         </div>
