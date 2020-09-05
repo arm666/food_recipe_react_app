@@ -38,7 +38,7 @@ function SearchC() {
       .then((res) => res.json())
       .then((d) => {
         if (d.hits.length !== 0) {
-          history.push("food_recipe_react_app/search/" + recipeName, {
+          history.push("/food_recipe_react_app/search/" + recipeName, {
             recipeArr: d.hits,
           });
         } else {

@@ -13,7 +13,7 @@ function App() {
     <Router history={history}>
       <Navbar />
       <Switch>
-        <Route exact path="/food_recipe_react_app/">
+        <Route exact path="/food_recipe_react_app">
           <SearchC />
         </Route>
         <Route path="/food_recipe_react_app/search/:name" component={Recipe}></Route>
